@@ -38,17 +38,22 @@ function initForm() {
 
 initForm();
 
-// При сабмите формы очищай хранилище и поля формы,
-// а также выводи объект с полями email, message и текущими их значениями в консоль.
-
 feedbackForm.addEventListener('submit', evt => {
   evt.preventDefault();
-  console.log('Отправляем форму');
+  // проверка, заполнен ли email
+  const inputName = feedbackForm.email.value.trim();
+  if (inputName !== '') {
+    console.log('Отправляем форму');
 
-  let persistedFilters = localStorage.getItem(LOCALSTORAGE_KEY);
-  persistedFilters = JSON.parse(persistedFilters);
-  console.log(persistedFilters);
+    // выводи объект с полями email, message и текущими их значениями в консоль.
+    let persistedFilters = localStorage.getItem(LOCALSTORAGE_KEY);
+    persistedFilters = JSON.parse(persistedFilters);
+    console.log(persistedFilters);
 
-  evt.currentTarget.reset();
-  localStorage.removeItem(LOCALSTORAGE_KEY);
+    // При сабмите формы очищай хранилище и поля формы,
+    evt.currentTarget.reset();
+    localStorage.removeItem(LOCALSTORAGE_KEY);
+    return;
+  }
+  return;
 });
