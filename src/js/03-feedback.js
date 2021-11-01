@@ -17,7 +17,7 @@ feedbackForm.addEventListener(
     persistedFilters = persistedFilters ? JSON.parse(persistedFilters) : {};
     persistedFilters[evt.target.name] = evt.target.value;
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(persistedFilters));
-    console.log(persistedFilters);
+    // console.log(persistedFilters);
   }, 500),
 );
 
@@ -55,5 +55,6 @@ feedbackForm.addEventListener('submit', evt => {
     localStorage.removeItem(LOCALSTORAGE_KEY);
     return;
   }
+  alert('Поле электронного адреса должно быть заполнено!');
   return;
 });
